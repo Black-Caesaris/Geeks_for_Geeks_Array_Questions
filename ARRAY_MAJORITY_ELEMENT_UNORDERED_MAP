@@ -1,0 +1,98 @@
+#include <iostream>
+#include<algorithm>
+#include<unordered_map>
+#include<vector>
+using namespace std;
+
+int main() {
+    
+    int t;
+    cin>>t;
+    
+    int size;
+    
+   
+    
+    int flag = 0;
+    int num;
+    int i = 0;
+    int count=1;
+    
+    while(--t>=0)
+        
+    {
+        
+        cin>>size;
+        vector<int> v;
+        unordered_map<int, int> map;
+        vector<int>::iterator vi;
+        unordered_map<int, int>::iterator mi;
+        
+        for (i = 0 ; i < size; i++)
+        {
+            cin>>num;
+            v.push_back(num);
+            
+            
+        }
+        i= 0 ;
+        
+        for(vi = v.begin() ; vi!=v.end() ; vi++)
+        {  // cout<<"A"<<*vi<<"A";
+            
+            if(map.count(*vi) > 0)
+            {
+                //cout<<"inside map count if ";
+                
+                mi  = map.find(*vi);
+                mi->second++;
+                if(mi->second> size/2)
+                {
+                    flag = 1;
+                    
+                    break;
+                }
+                
+                    
+                
+            }
+            else
+                map.insert({*vi ,1});
+            
+            
+            
+            
+            
+        }
+        
+      
+        
+        
+        
+      /*  for(mi = map.begin() ; mi!=map.end() ; mi++)
+        {
+            
+            cout<<"key"<<mi->first<<endl;
+            cout<<"value"<<mi->second<<endl;
+            
+            
+        }
+        */
+        if(flag)
+        {
+            flag = 0;
+            cout<<mi->first;
+            cout<<endl;
+            
+        }
+        else
+        { cout<<"NO Majority Element";
+            cout<<endl;
+        }
+    }
+    
+    
+    
+    
+    return 0;
+}
