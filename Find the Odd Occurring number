@@ -1,0 +1,34 @@
+#include <iostream>
+#include<vector>
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	int size = 0;
+	
+	
+	
+	
+	while(--t >=0)
+	{
+	    cin>>size;
+	    vector<int> v;
+	    vector<int>::iterator  vi ;
+	    int num;
+	    int result=0 ;
+	    for(int x = 0; x <size ; x++)
+	    {   
+	        cin>>num;
+	        v.push_back(num);
+	    }
+	    for(vi = v.begin() ; vi!=v.end(); vi++)
+	    {
+	        result = result ^ *vi;
+	        
+	    }
+	    cout<<(result);
+	    cout<<endl;
+	}
+	return 0;
+}
