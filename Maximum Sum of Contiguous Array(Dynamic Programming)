@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<vector>
+#include<iostream>
+#include<limits.h>
+#include<algorithm>
+
+using namespace std ;
+
+int main() {
+	int t;
+	cin>>t;
+	int size;
+	int num;
+	
+	while(--t >= 0 )
+	{
+	    cin>>size;
+	    vector<int> v ;
+	    v.reserve(size);
+	    vector<int>::iterator i ;
+	    vector<int>::iterator i1 ; 
+	    int max_sum_so_far;
+	    int curr_max;
+	    
+	    for(int x = 0 ; x<size ; x++)
+	    {
+	        cin>>num;
+	        v.push_back(num);
+	    }
+	    
+	        max_sum_so_far = *(v.begin());
+	    
+	    for(i = v.begin() ; i!=v.end() ; i++)
+	    {
+	        curr_max = *i;
+	        for(i1 = i+1 ; i1!=v.end() ; i1++)
+	        {
+	            curr_max = max((*i1) , curr_max + (*i1));
+	            max_sum_so_far = max(curr_max, max_sum_so_far);
+	        }
+	        
+	    }
+	    cout<<max_sum_so_far;
+	    cout<<endl;
+	   
+	}
+	return 0;
+}
