@@ -1,0 +1,58 @@
+#include <iostream>
+#include<vector>
+using namespace std;
+
+int main() {
+	
+	int t;
+	cin>>t;
+	int size;
+	typedef vector<int>::iterator vi;
+	int num;
+	int x = 0;
+	
+	while(--t >= 0)
+	{
+	    cin>>size;
+	    vector<int> v;
+	    v.reserve(size);
+	    vi i;
+	    int xor1_result = 0;
+	    int xor2_result = 0;
+	    int final_xor_result;
+	    
+	    //input
+	    for( x= 0 ; x<size-1 ; x++)
+	    {
+	        cin>>num;
+	        if(num > size)
+	        {
+	            return 0;
+	            
+	        }
+	        else{
+	            v.push_back(num);
+	        }
+	        
+	    }
+	    x = 1; 
+	    
+	    //xoring all the nums from 1-n
+	    for(x = 1 ; x<=size ; x++)
+	    {
+	        xor1_result = xor1_result ^ x;
+	    }
+	    //xoring all elements of vector
+	    for(i = v.begin() ; i!=v.end() ; i++)
+	    {
+	        xor2_result = xor2_result ^ (*i);
+	    }
+	    //calculating lost element;
+	    final_xor_result = xor1_result ^ xor2_result;
+	    cout<<final_xor_result;
+	    cout<<endl;
+	    
+	    
+	}
+	return 0;
+}
