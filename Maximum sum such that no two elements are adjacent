@@ -1,0 +1,62 @@
+#include<iostream>
+#include<vector>
+#include<stdio.h>
+#include<algorithm>
+
+using namespace std;
+int returnMaxSum(vector<int> &v){
+    //cout<<v[0];
+    vector<int> dp;
+    dp.reserve(v.size());
+    if(v.size() == 0){
+        return -1;
+        
+    }
+    //import test case, this solution does not work for size = 1, aso had to put this condition.
+    if(v.size() == 1){
+        return v[0];
+    }
+    
+    dp[0] = max(0, v[0]);
+    dp[1] = max(v[1], dp[0]);
+    int maxSum;
+    maxSum = max(dp[0], dp[1]);
+    for(int i = 2 ; i < v.size() ; i++)
+    {
+        int ifSelectCurrent = max(v[i] + dp[i-2], dp[i-2]);
+        int ifNotSelectCurrent = max(dp[i-1], dp[i-2]);
+         dp[i] = max(ifSelectCurrent, ifNotSelectCurrent);
+        maxSum = max(dp[i], maxSum);
+    }
+    return maxSum;
+    
+}
+
+//using namespace std;
+int main() {
+    int t;
+    cin>>t;
+    int num;
+    int size;
+    
+    int i;
+    while(--t>=0){
+        cin>>size;
+        vector<int> v;
+        v.reserve(size);
+        vector<int>::iterator vi;
+        
+        for(i = 0 ; i < size ; i++){
+            cin>>num;
+            v.push_back(num);
+        }
+        int maxsum = returnMaxSum(v);
+       // int maxsum;
+        cout<<maxsum;
+        cout<<endl;
+        
+        
+    }
+	
+	return 0;
+}
