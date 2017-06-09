@@ -1,0 +1,52 @@
+#include <iostream>
+#include<vector>
+#include<stdio.h>
+#include<algorithm>
+#include<limits.h>
+
+using namespace std;
+
+int main() {
+	
+	int t;
+	cin>>t;
+	int num;
+	int i;
+	int size;
+	while(--t>=0){
+	    cin>>size;
+	    int MAX_ELEMENT;
+	    int curr;
+	    MAX_ELEMENT = INT_MIN;
+	    vector<int> v;
+	    v.reserve(size);
+	    vector<int> answer;
+	    
+	    for(i = 0 ; i <size; i++){
+	        cin>>num;
+	        v.push_back(num);
+	    }
+	    vector<int>::iterator vi;
+	    
+	    for(vi = v.end() - 1; vi >= v.begin() ; vi--){
+	        curr = MAX_ELEMENT;
+	        
+	        MAX_ELEMENT = max(MAX_ELEMENT, *vi);
+	        
+	        if(curr!=MAX_ELEMENT){
+	            answer.push_back(MAX_ELEMENT);
+	            
+	            
+	        }
+	        
+	        
+	        
+	        
+	    }
+	    for(vi = answer.end() -1 ; vi >=answer.begin() ; vi--){
+	            cout<<*vi<<" ";
+	        }
+	    cout<<endl;
+	}
+	return 0;
+}
