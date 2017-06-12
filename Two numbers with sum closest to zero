@@ -1,0 +1,79 @@
+#include <iostream>
+#include<stdio.h>
+#include<vector>
+#include<algorithm>
+#include<math.h>
+#include<limits.h>
+using namespace std;
+
+int main() {
+	int t, num, size, i;
+	cin>>t;
+	//int min;
+//	min = INT_MAX;
+	
+	
+	while(--t>=0){
+	    cin>>size;
+	    vector<int> v;
+	    int diff;
+	    int min = INT_MAX;
+	    
+	    for(i = 0 ; i< size ; i++){
+	        cin>>num;
+	        v.push_back(num);
+	    }
+	    
+	    
+	    sort(v.begin(), v.end());
+	    
+	  /*  for(int j = 0 ; j<size;j++){
+	        cout<<v[j]<<endl;
+	        
+	    }*/
+	    
+	    vector<int>::iterator ii = v.begin();
+	    vector<int>::iterator vv = v.end() - 1 ;
+	    vector<int>::iterator num1;
+	    vector<int>::iterator num2;
+	   while(ii < vv){ 
+	      /* cout<<*ii;
+	       cout<<endl;
+	       cout<<*vv;
+	       cout<<endl;*/
+	       
+	       
+	        
+	    diff = *ii +*vv;
+	    if(diff == 0){
+	       num1 = ii;
+	       num2 = vv;
+	        break;
+	    }
+	    
+	    if(abs(diff) < abs(min))
+	    {       
+	        num1 = ii;
+	        num2 = vv;
+	        //cout<<*ii<<endl;
+	        //cout<<*vv<<endl;
+	        min = (diff);
+	    }
+	    
+	    if(diff < 0 ){
+	        ii++;
+	    }
+	    
+	    if(diff > 0){
+	        vv--;
+	    }
+	    
+	    
+	   }
+	   
+	  cout<<*num1<<" "<<*num2;
+	   cout<<endl;
+	   
+	}
+	return 0;
+}
