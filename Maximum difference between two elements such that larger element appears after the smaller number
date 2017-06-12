@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include<vector>
+#include<algorithm>
+#include<iostream>
+#include<utility>
+
+using namespace std;
+
+pair<int, int> findMaxSub(vector<int> &v){
+    
+    int curr_max = v[0];
+    int start;
+    int end;
+    
+    int maxSoFar = v[0];
+    start = 0 ; 
+    end = 0;
+    
+    for(int i = 1 ; i < v.size() ; i++){
+        
+        
+        if(v[i] > v[i] + curr_max)
+        {
+                
+        curr_max =v[i];
+        start  = i;
+        
+        }
+        
+        if(v[i] < v[i] + curr_max)
+        {
+                
+        curr_max =v[i] + curr_max;
+        
+        }
+        
+        if(curr_max > maxSoFar){
+            maxSoFar = curr_max;
+            end = i ;
+        }
+        else
+        {
+            maxSoFar = maxSoFar;
+        }
+        
+    }
+    end  = end + 1;
+   // cout<<start<<" "<<end<<endl;
+    //cout<<maxSoFar;
+    //cout<<endl;
+    pair<int, int> x = make_pair(start, end);
+    return x;
+}
+
+int main() {
+	//code
+	
+	int t, num, size, i;
+	cin>>t;
+	while(--t>=0){
+	    cin>>size;
+	    vector<int> v;
+	    for(i = 0 ; i <size ; i++){
+	        cin>>num;
+	        v.push_back(num);
+	    }
+	    i = 0;
+	    vector<int> vv;
+	    
+	    for(i = 0 ; i< size - 1 ; i++){
+	        vv.push_back(v[i+1] - v[i]);
+	    }
+	  pair<int, int> answer =   findMaxSub(vv);
+	  //cout<<answer.second<<endl;
+	  //cout<<answer.first<<endl;
+	  //cout<<v[answer.second]<<endl;
+	  //cout<<v[answer.first]<<endl;
+	  cout << (v[answer.second ] - v[answer.first]);
+	    
+	}
+	return 0;
+}
